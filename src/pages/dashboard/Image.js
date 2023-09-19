@@ -1,10 +1,11 @@
-import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react';
-import backend from '../api/backend';
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
+import backend from "../api/backend";
+import { saveAs } from "file-saver";
 
 const Image = () => {
-    const router = useRouter();
-    const [data, setData] = useState({});
+  const router = useRouter();
+  const [data, setData] = useState({});
   const { _id } = router.query;
   useEffect(() => {
     backend
@@ -19,13 +20,27 @@ const Image = () => {
         console.error("Error fetching data:", error);
       });
   }, [_id]);
-  console.log(data)
-    return (
-        <div>
-      
-          { data[0]?.image? <img src={`http://localhost:8080/uploads/${data[0]?.image}`} />: "not found your visa"}
-        </div>
-    );
+  console.log(data);
+  const saveFile = () => {
+    saveAs(`http://localhost:8080/uploads/${data[0]?.image}`);
+  };
+  return (
+    <div>
+      <button
+        // href={`http://localhost:8080/uploads/${data[0]?.image}`}
+        // download
+        className="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-3"
+        onClick={saveFile}
+      >
+        DOWNLOAD
+      </button>
+      {data[0]?.image ? (
+        <img src={`http://localhost:8080/uploads/${data[0]?.image}`} />
+      ) : (
+        "not found your visa"
+      )}
+    </div>
+  );
 };
 
 export default Image;

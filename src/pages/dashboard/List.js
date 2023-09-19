@@ -1,11 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import Highlighter from "react-highlight-words";
-import { Button, Input, Space, Table, Image, Breadcrumb } from "antd";
+import { Button, Input, Space, Table, Image, Breadcrumb, Drawer } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import backend from "../api/backend";
 import auth from "@/components/firebase.init";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useRouter } from "next/router";
+import EditListItem from "./EditListItem";
 
 const List = () => {
   const [data, setData] = useState(null);
@@ -126,25 +127,24 @@ const List = () => {
       ),
   });
 
-  console.log(data);
+  // console.log(data);
   // const [dataImage, setDataImage] = useState(null);
   useEffect(() => {
-  
     backend
       .get("v1/passport/get/all") // Replace with your API endpoint
       .then((response) => {
         // Handle the successful response here
-        setData(response.data);
-        
+        setData(response.data.reverse());
+
         // setDataImage(response.data.imge);
       })
       .catch((error) => {
         // Handle any errors here
         console.error("Error fetching data:", error);
       });
-    
   }, [reload]);
   console.log(reload);
+
   const deleteItem = async (id) => {
     console.log(id);
     setReload(true);
@@ -157,7 +157,6 @@ const List = () => {
       .catch((error) => {
         console.error(error);
       });
-     
   };
   const columns = [
     {
@@ -190,11 +189,23 @@ const List = () => {
       // sorter: (a, b) => a.address.length - b.address.length,
       // sortDirections: ['descend', 'ascend'],
     },
+
     {
       title: "Action",
       key: "action",
       render: (_, record) => (
+        // console.log(record._id),
         <Space size="middle">
+          <EditListItem record={record} setReload={setReload}/>
+
+          {/* <button
+              onClick={() => {
+                editItem(record._id);
+                showDrawer();
+              }}
+            >
+              Edit
+            </button> */}
           <button onClick={() => deleteItem(record._id)}>Delete</button>
         </Space>
       ),
