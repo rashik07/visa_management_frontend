@@ -170,7 +170,7 @@ const InfoInput = () => {
                 extra="file upload png/jpg"
                 rules={[{ required: true, message: "Please upload picture !" }]}
               >
-                <Upload name="image" listType="picture" action="/public/uploads" >
+                <Upload name="image" listType="picture" action="https://visa-management-frontend.vercel.app/" >
                   <Button icon={<UploadOutlined />}>Click to upload</Button>
                 </Upload>
               </Form.Item>
