@@ -101,7 +101,25 @@ const InfoInput = () => {
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
-
+  const uploadAction = 'https://visa-management-backend1.onrender.com/api/v1/passport/post';
+  const uploadProps = {
+    name: 'file',
+    action: uploadAction,
+    // Add any additional headers if needed
+    // headers: {
+    //   authorization: 'Bearer yourTokenHere',
+    // },
+    onChange(info) {
+      if (info.file.status !== 'uploading') {
+        console.log(info.file, info.fileList);
+      }
+      if (info.file.status === 'done') {
+        console.log(`${info.file.name} file uploaded successfully.`);
+      } else if (info.file.status === 'error') {
+        console.error(`${info.file.name} file upload failed.`);
+      }
+    },
+  };
 
   return (
     <>
@@ -170,7 +188,7 @@ const InfoInput = () => {
                 extra="file upload png/jpg"
                 rules={[{ required: true, message: "Please upload picture !" }]}
               >
-                <Upload name="image" listType="picture" action="http://localhost:3000/" >
+                <Upload name="image" listType="picture" {...uploadProps} >
                   <Button icon={<UploadOutlined />}>Click to upload</Button>
                 </Upload>
               </Form.Item>
