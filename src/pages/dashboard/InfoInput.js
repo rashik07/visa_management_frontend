@@ -156,7 +156,7 @@ const InfoInput = () => {
                 label="Upload"
                 valuePropName="fileList"
                 getValueFromEvent={normFile}
-                extra="file upload png/jpg/pdf"
+                extra="file upload png/jpg"
                 rules={[{ required: true, message: "Please upload picture !" }]}
               >
                 <Upload name="image" listType="picture">
