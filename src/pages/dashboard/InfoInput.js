@@ -83,7 +83,12 @@ const InfoInput = () => {
     formData.append("name", values.name);
     formData.append("passport", values.passport);
     try{
-      const response = await backend.post("v1/passport/post", formData);
+      const response = await backend.post("v1/passport/post", formData,  {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          "x-rapidapi-host": "visa-management-backend1.onrender.com",
+          // "x-rapidapi-key": "your-rapidapi-key-here",
+        },});
 
       if (response.status == 200) {
         message.success("Successfully added");
@@ -101,25 +106,22 @@ const InfoInput = () => {
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
-  const uploadAction = 'https://visa-management-backend1.onrender.com/api/v1/passport/post';
-  const uploadProps = {
-    name: 'file',
-    action: uploadAction,
-    // Add any additional headers if needed
-    // headers: {
-    //   authorization: 'Bearer yourTokenHere',
-    // },
-    onChange(info) {
-      if (info.file.status !== 'uploading') {
-        console.log(info.file, info.fileList);
-      }
-      if (info.file.status === 'done') {
-        console.log(`${info.file.name} file uploaded successfully.`);
-      } else if (info.file.status === 'error') {
-        console.error(`${info.file.name} file upload failed.`);
-      }
-    },
-  };
+  // const uploadAction = 'https://visa-management-backend1.onrender.com/api/v1/passport/post';
+  // const uploadProps = {
+  //   name: 'file',
+  //   action: uploadAction,
+ 
+  //   onChange(info) {
+  //     if (info.file.status !== 'uploading') {
+  //       console.log(info.file, info.fileList);
+  //     }
+  //     if (info.file.status === 'done') {
+  //       console.log(`${info.file.name} file uploaded successfully.`);
+  //     } else if (info.file.status === 'error') {
+  //       console.error(`${info.file.name} file upload failed.`);
+  //     }
+  //   },
+  // };
 
   return (
     <>
@@ -188,7 +190,7 @@ const InfoInput = () => {
                 extra="file upload png/jpg"
                 rules={[{ required: true, message: "Please upload picture !" }]}
               >
-                <Upload name="image" listType="picture" {...uploadProps} >
+                <Upload name="image" listType="picture"  >
                   <Button icon={<UploadOutlined />}>Click to upload</Button>
                 </Upload>
               </Form.Item>
