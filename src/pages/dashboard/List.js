@@ -184,7 +184,7 @@ const List = () => {
       title: "Image",
       dataIndex: "image",
       key: "image",
-      render: (res) => <Image src={`http://localhost:8080/uploads/${res}`} />,
+      render: (res) => <Image src={`https://visa-management-backend1.onrender.com/uploads/${res}`} />,
       // ...getColumnSearchProps('image'),
       // sorter: (a, b) => a.address.length - b.address.length,
       // sortDirections: ['descend', 'ascend'],
