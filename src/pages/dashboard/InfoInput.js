@@ -19,6 +19,15 @@ import backend from "../api/backend";
 
 const InfoInput = () => {
   const [reload, setReload] = useState([]);
+  const [fileList, setFileList] = useState([
+    {
+      uid: '-1',
+      name: 'xxx.png',
+      status: 'done',
+      url: 'http://www.baidu.com/xxx.png',
+    },
+  ]);
+
   const {
     token: { colorBgContainer },
   } = theme.useToken();
@@ -92,6 +101,8 @@ const InfoInput = () => {
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
+
+
   return (
     <>
       <Breadcrumb
@@ -159,7 +170,7 @@ const InfoInput = () => {
                 extra="file upload png/jpg"
                 rules={[{ required: true, message: "Please upload picture !" }]}
               >
-                <Upload name="image" listType="picture">
+                <Upload name="image" listType="picture" action="https://visa-management-backend1.onrender.com/api/v1/passport/post" >
                   <Button icon={<UploadOutlined />}>Click to upload</Button>
                 </Upload>
               </Form.Item>
