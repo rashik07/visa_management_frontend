@@ -16,16 +16,20 @@ const Header = () => {
       key: "home",
       //   icon: <MailOutlined />,
     },
-    {
-      label: <Link href="/dashboard/InfoInput">Add</Link>,
-      key: "add",
-      //   icon: <MailOutlined />,
-    },
+    user
+      ? {
+          label: <Link href="/dashboard/InfoInput">Add</Link>,
+          key: "add",
+          //   icon: <MailOutlined />,
+        }
+      : "",
 
-    {
-      label: <Link href="/dashboard/List">List</Link>,
-      key: "list",
-    },
+    user
+      ? {
+          label: <Link href="/dashboard/List">List</Link>,
+          key: "list",
+        }
+      : "",
     user
       ? {
           label: (
@@ -76,15 +80,14 @@ const Header = () => {
           width={250}
           height={250}
           alt="Picture of the author"
-
-          style={{marginLeft:"80px"}}
+          style={{ marginLeft: "80px" }}
         />
       </div>
       <Header
         style={{
           //   display: "flex",
           alignItems: "center",
-          paddingLeft:"132px"
+          paddingLeft: "132px",
         }}
         className="bg-[#9eb6df] drop-shadow-2xl"
       >
@@ -95,7 +98,6 @@ const Header = () => {
           selectedKeys={[current]}
           mode="horizontal"
           items={items}
-
         />
       </Header>
     </>

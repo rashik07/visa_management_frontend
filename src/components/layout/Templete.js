@@ -19,9 +19,10 @@ const Template = ({ children }) => {
       {/* <MenuForAll /> */}
       <Content
         style={{
-          padding: "50px 150px",
-            height: "80vh",
+          // padding: "50px 150px",
+            // height: "100vh",
         }}
+        className="lg:px-[150px] lg:py-[50px] px-[20px] min-h-screen"
       >
         {children}
       </Content>

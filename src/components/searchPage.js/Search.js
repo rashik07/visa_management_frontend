@@ -86,8 +86,9 @@ const Search = () => {
         <Breadcrumb.Item>Home</Breadcrumb.Item>
         {/* <Breadcrumb.Item>add</Breadcrumb.Item> */}
       </Breadcrumb>
+  
       <div
-        className="site-layout-content"
+        className="w-full p-6 sm:p-8 bg-white rounded-lg shadow-xl dark:bg-gray-800"
         style={{
           background: colorBgContainer,
         }}
@@ -153,9 +154,10 @@ const Search = () => {
               {/* <Form.Item>{num1} + {num2} =</Form.Item>  */}
               <Form.Item
                 wrapperCol={{
-                  offset: 8,
-                  span: 16,
+                  xs: { span: 24 },   // On extra small screens, take the full width
+                  sm: { span: 16, offset: 8 },  // On small screens and above, offset by 8 and span 16
                 }}
+   
               >
                 <Button
                   className="bg-[#2A539A]"

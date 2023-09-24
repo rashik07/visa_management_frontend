@@ -92,6 +92,7 @@ const InfoInput = () => {
 
       if (response.status == 200) {
         message.success("Successfully added");
+        router.push("/dashboard/List");
       }
       if (response.status == 500) {
         message.error("Please upload png and jpg file and file size under 5mb");
