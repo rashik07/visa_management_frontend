@@ -78,20 +78,24 @@ const Search = () => {
   let number = `${num1} + ${num2}`;
   return (
     <div>
-      <Breadcrumb
+      {/* <Breadcrumb
         style={{
           margin: "16px 0",
         }}
       >
         <Breadcrumb.Item>Home</Breadcrumb.Item>
-        {/* <Breadcrumb.Item>add</Breadcrumb.Item> */}
-      </Breadcrumb>
   
+      </Breadcrumb> */}
+      <div className="bg-[#f2f5f7] p-2 rounded-lg shadow-xl mb-5">
+        <h3 className="bg-[#deedf7] border border-[#aed0ea] rounded-lg shadow-xl">Application search</h3>
+        <p>Search for your previously filled applications</p>
+            Enter the reference number of the application you filled earlier and type in the security code you see in the picture below.
+      </div>
       <div
-        className="w-full p-6 sm:p-8 bg-white rounded-lg shadow-xl dark:bg-gray-800"
-        style={{
-          background: colorBgContainer,
-        }}
+        className="w-full p-6 sm:p-8 bg-white rounded-lg shadow-xl dark:bg-gray-800 bg-[#f2f5f7]"
+        // style={{
+        //   background: colorBgContainer,
+        // }}
       >
         {" "}
         <div className="min-h-full flex  justify-center">
@@ -99,9 +103,14 @@ const Search = () => {
             <h1 className="flex  justify-center my-8 text-lg font-semibold">
               Visa Application And Search
             </h1>
-            <a href="https://www.schengenvisainfo.com/wp-content/uploads/2020/02/Schengen-Visa-Application-Form.pdf" download="MyExampleDoc" target="_blank">
-          
-              <span className="flex  justify-center text-blue-600">click here to download the application form</span> 
+            <a
+              href="https://www.schengenvisainfo.com/wp-content/uploads/2020/02/Schengen-Visa-Application-Form.pdf"
+              download="MyExampleDoc"
+              target="_blank"
+            >
+              <span className="flex  justify-center text-blue-600">
+                click here to download the application form
+              </span>
             </a>
             {/* <span className="flex  justify-center">fdsdfsdf</span> */}
             <Form
@@ -154,10 +163,9 @@ const Search = () => {
               {/* <Form.Item>{num1} + {num2} =</Form.Item>  */}
               <Form.Item
                 wrapperCol={{
-                  xs: { span: 24 },   // On extra small screens, take the full width
-                  sm: { span: 16, offset: 8 },  // On small screens and above, offset by 8 and span 16
+                  xs: { span: 24 }, // On extra small screens, take the full width
+                  sm: { span: 16, offset: 8 }, // On small screens and above, offset by 8 and span 16
                 }}
-   
               >
                 <Button
                   className="bg-[#2A539A]"

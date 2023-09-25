@@ -12,7 +12,7 @@ const Header = () => {
 
   const items = [
     {
-      label: <Link href="/">Home</Link>,
+      label: <Link href="/">Application Search</Link>,
       key: "home",
       //   icon: <MailOutlined />,
     },
