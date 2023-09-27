@@ -8,7 +8,7 @@ const Footer = () => {
         style={{
           textAlign: "center",
         }}
-      
+      className="bg-[#2A539A] shadow-2xl text-white"
       >
         SCHENGEN VISA ©2023 Created by MD. RASHIK SAIF
       </Footer>

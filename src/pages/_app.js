@@ -12,7 +12,7 @@ export default function App({ Component, pageProps }) {
           borderRadius: 2,
           fontFamily:"Lucida Grande",
           // Alias Token
-          colorBgContainer: "#d3d3d3",
+          colorBgContainer: "f2f5f7",
         },
       }}
     >

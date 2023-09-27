@@ -86,13 +86,22 @@ const Search = () => {
         <Breadcrumb.Item>Home</Breadcrumb.Item>
   
       </Breadcrumb> */}
-      <div className="bg-[#f2f5f7] p-2 rounded-lg shadow-xl mb-5">
-        <h3 className="bg-[#deedf7] border border-[#aed0ea] rounded-lg shadow-xl">Application search</h3>
-        <p>Search for your previously filled applications</p>
-            Enter the reference number of the application you filled earlier and type in the security code you see in the picture below.
+      <div className="bg-[#f2f5f7] p-2 rounded-lg shadow-xl mb-16 ">
+        <h3 className="bg-[#deedf7] border border-[#aed0ea] rounded-lg shadow-xl pt-2 pb-4 pl-2 font-semibold	flex  justify-center">
+          Application search
+        </h3>
+        <div className="pl-2 py-4 ">
+          <p className="font-semibold flex  justify-center">
+            Search for your previously filled applications
+          </p>
+          <span className="flex  justify-center">
+            Enter the reference number of the application you filled earlier and
+            type in the security code you see in the picture below.
+          </span>
+        </div>
       </div>
       <div
-        className="w-full p-6 sm:p-8 bg-white rounded-lg shadow-xl dark:bg-gray-800 bg-[#f2f5f7]"
+        className="w-full p-6 sm:p-8 bg-[#f2f5f7] rounded-lg shadow-xl dark:bg-gray-800 bg-[#f2f5f7]"
         // style={{
         //   background: colorBgContainer,
         // }}
@@ -100,7 +109,7 @@ const Search = () => {
         {" "}
         <div className="min-h-full flex  justify-center">
           <div className="w-full max-w-md">
-            <h1 className="flex  justify-center my-8 text-lg font-semibold">
+            <h1 className="flex  justify-center my-8  font-semibold">
               Visa Application And Search
             </h1>
             <a

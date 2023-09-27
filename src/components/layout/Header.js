@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { Breadcrumb, Layout, Menu, message, theme } from "antd";
+import { Breadcrumb, Layout, Menu, message, Skeleton, Spin } from "antd";
 import auth from "../firebase.init";
 import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
 import Link from "next/link";
@@ -18,7 +18,7 @@ const Header = () => {
     },
     user
       ? {
-          label: <Link href="/dashboard/InfoInput">Add</Link>,
+          label: <Link href="/dashboard/InfoInput">Add Visa</Link>,
           key: "add",
           //   icon: <MailOutlined />,
         }
@@ -26,7 +26,7 @@ const Header = () => {
 
     user
       ? {
-          label: <Link href="/dashboard/List">List</Link>,
+          label: <Link href="/dashboard/List">Visa List</Link>,
           key: "list",
         }
       : "",
@@ -69,46 +69,41 @@ const Header = () => {
     );
   }
   if (loading) {
-    return <p>Loading...</p>;
+    return  <Skeleton />;
   }
   return (
     <>
-      <div className="demo-logo bg-[#2A539A] ">
-        {" "}
-        <Image
-          src="/logo.png"
-          width={250}
-          height={250}
-          alt="Picture of the author"
-          style={{ marginLeft: "80px" }}
-        />
-      </div>
-      <Header
-        style={{
-          //   display: "flex",
-          alignItems: "center",
-          paddingLeft: "132px",
-        }}
-        className="bg-[#9eb6df] drop-shadow-2xl"
-      >
-        <Menu
-          // theme="dark"
-          className="bg-[#9eb6df]"
-          onClick={onClick}
-          selectedKeys={[current]}
-          mode="horizontal"
-          items={items}
-        />
-      </Header>
+      {/* <Skeleton loading={loading} active avatar> */}
+        <div className="demo-logo bg-[#2A539A] flex justify-center">
+          {" "}
+          <Image
+            src="/logo.png"
+            width={250}
+            height={250}
+            alt="Picture of the author"
+            // style={{ marginLeft: "80px" }}
+            // className="justify-center"
+          />
+        </div>
+        <Header
+          style={{
+            //   display: "flex",
+            alignItems: "center",
+            // paddingLeft: "132px",
+          }}
+          className="bg-[#9eb6df] drop-shadow-2xl "
+        >
+          <Menu
+            // theme="dark"
+            className="bg-[#9eb6df] justify-center"
+            onClick={onClick}
+            selectedKeys={[current]}
+            mode="horizontal"
+            items={items}
+          />
+        </Header>
+      {/* </Skeleton> */}
     </>
-
-    //   <Footer
-    //     style={{
-    //       textAlign: "center",
-    //     }}
-    //   >
-    //     Ant Design ©2023 Created by Ant UED
-    //   </Footer>
   );
 };
 

@@ -22,7 +22,7 @@ const Template = ({ children }) => {
           // padding: "50px 150px",
             // height: "100vh",
         }}
-        className="lg:px-[150px] lg:py-[50px] px-[20px] min-h-screen"
+        className="lg:px-[150px] lg:py-[50px] py-[30px] px-[20px] min-h-screen"
       >
         {children}
       </Content>

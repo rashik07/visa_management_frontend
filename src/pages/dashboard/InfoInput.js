@@ -10,6 +10,7 @@ import {
   Breadcrumb,
   theme,
   message,
+  Skeleton,
 } from "antd";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -21,10 +22,10 @@ const InfoInput = () => {
   const [reload, setReload] = useState([]);
   const [fileList, setFileList] = useState([
     {
-      uid: '-1',
-      name: 'xxx.png',
-      status: 'done',
-      url: 'http://www.baidu.com/xxx.png',
+      uid: "-1",
+      name: "xxx.png",
+      status: "done",
+      url: "http://www.baidu.com/xxx.png",
     },
   ]);
 
@@ -38,7 +39,7 @@ const InfoInput = () => {
   if (loading) {
     return (
       <div>
-        <p>Initialising User...</p>
+        <Skeleton />
       </div>
     );
   }
@@ -82,13 +83,14 @@ const InfoInput = () => {
     formData.append("image", values.image[0].originFileObj);
     formData.append("name", values.name);
     formData.append("passport", values.passport);
-    try{
-      const response = await backend.post("v1/passport/post", formData,  {
+    try {
+      const response = await backend.post("v1/passport/post", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
           "x-rapidapi-host": "visa-management-backend1.onrender.com",
           // "x-rapidapi-key": "your-rapidapi-key-here",
-        },});
+        },
+      });
 
       if (response.status == 200) {
         message.success("Successfully added");
@@ -98,11 +100,9 @@ const InfoInput = () => {
         message.error("Please upload png and jpg file and file size under 5mb");
       }
       console.log(response);
-    }
-    catch(error){
+    } catch (error) {
       message.error("Please upload png and jpg file and file size under 5mb");
     }
-
   };
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
@@ -111,7 +111,7 @@ const InfoInput = () => {
   // const uploadProps = {
   //   name: 'file',
   //   action: uploadAction,
- 
+
   //   onChange(info) {
   //     if (info.file.status !== 'uploading') {
   //       console.log(info.file, info.fileList);
@@ -126,28 +126,22 @@ const InfoInput = () => {
 
   return (
     <>
-      <Breadcrumb
+      {/* <Breadcrumb
         style={{
           margin: "16px 0",
         }}
       >
-        <Breadcrumb.Item>Home</Breadcrumb.Item>
-        <Breadcrumb.Item>add</Breadcrumb.Item>
-      </Breadcrumb>
-      <div
-        className="site-layout-content"
-        style={{
-          background: colorBgContainer,
-          // height: "100vh",
-        }}
-      >
+        <Breadcrumb.Item>application_search</Breadcrumb.Item>
+        <Breadcrumb.Item>add_visa</Breadcrumb.Item>
+      </Breadcrumb> */}
+      <div className="site-layout-content bg-[#f2f5f7] rounded-lg shadow-xl">
         <div className="min-h-full flex  justify-center">
           <div className="w-full max-w-md">
             <h1 className="flex  justify-center my-8 text-lg font-semibold">
               Passport Data Entry
             </h1>
             <Form
-              className="mt-6"
+              className="mt-6 px-2"
               name="login-form"
               onFinish={onFinish}
               labelCol={{
@@ -191,15 +185,15 @@ const InfoInput = () => {
                 extra="file upload png/jpg"
                 rules={[{ required: true, message: "Please upload picture !" }]}
               >
-                <Upload name="image" listType="picture"  >
+                <Upload name="image" listType="picture">
                   <Button icon={<UploadOutlined />}>Click to upload</Button>
                 </Upload>
               </Form.Item>
 
               <Form.Item
                 wrapperCol={{
-                  offset: 8,
-                  span: 16,
+                  xs: { span: 24 }, // On extra small screens, take the full width
+                  sm: { span: 16, offset: 8 }, // On small screens and above, offset by 8 and span 16
                 }}
               >
                 <Button

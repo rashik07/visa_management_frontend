@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import Highlighter from "react-highlight-words";
-import { Button, Input, Space, Table, Image, Breadcrumb, Drawer } from "antd";
+import { Button, Input, Space, Table, Image, Breadcrumb, Drawer , Skeleton} from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import backend from "../api/backend";
 import auth from "@/components/firebase.init";
@@ -217,7 +217,7 @@ const List = () => {
   if (loading) {
     return (
       <div>
-        <p>Initialising User...</p>
+       <Skeleton />
       </div>
     );
   }
@@ -229,7 +229,7 @@ const List = () => {
   }
 
   if (reload) {
-    return <h1>loading</h1>;
+    return   <Skeleton />;
   }
   return (
     <div>
@@ -241,7 +241,7 @@ const List = () => {
         <Breadcrumb.Item>Home</Breadcrumb.Item>
         <Breadcrumb.Item>list</Breadcrumb.Item>
       </Breadcrumb>
-      <Table columns={columns} dataSource={data} />
+      <Table  className="bg-[#f2f5f7] rounded-lg shadow-xl" columns={columns} dataSource={data} />
     </div>
   );
 };

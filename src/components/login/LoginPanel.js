@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Checkbox, Form, Input, message } from "antd";
+import { Button, Skeleton, Form, Input, message } from "antd";
 import auth from "../firebase.init";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 
@@ -15,7 +15,7 @@ const LoginPanel = () => {
     // );
   }
   if (loading) {
-    return <p>Loading...</p>;
+    return <Skeleton/>;
   }
 
   const onFinish = (values) => {
