@@ -10,7 +10,7 @@ const Footer = () => {
         }}
       className="bg-[#2A539A] shadow-2xl text-white"
       >
-        SCHENGEN VISA ©2023 Created by MD. RASHIK SAIF
+        COPYRIGHT © 2023 SCHENGEN VISA
       </Footer>
     </div>
   );
