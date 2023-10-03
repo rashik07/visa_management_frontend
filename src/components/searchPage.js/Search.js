@@ -127,10 +127,10 @@ const Search = () => {
               name="login-form"
               onFinish={onFinish}
               labelCol={{
-                span: 8,
+                span: 5,
               }}
               wrapperCol={{
-                span: 16,
+                span: 19,
               }}
               style={{
                 maxWidth: 600,
@@ -173,7 +173,7 @@ const Search = () => {
               <Form.Item
                 wrapperCol={{
                   xs: { span: 24 }, // On extra small screens, take the full width
-                  sm: { span: 16, offset: 8 }, // On small screens and above, offset by 8 and span 16
+                  sm: { span: 19, offset: 5 }, // On small screens and above, offset by 8 and span 16
                 }}
               >
                 <Button
