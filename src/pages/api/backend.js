@@ -12,7 +12,7 @@ if (typeof window == "undefined") {
   // console.log(baseUrl);
 } else {
   // baseUrl = window.location.origin + "/api/";
-  baseUrl = "https://visa-management-backend.vercel.app/";
+  baseUrl = "https://visa-management-backend.vercel.app/api/";
 
 }
 
