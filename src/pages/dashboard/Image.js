@@ -22,7 +22,7 @@ const Image = () => {
   }, [_id]);
   console.log(data);
   const saveFile = () => {
-    saveAs(`https://visa-management-backend1.onrender.com/uploads/${data[0]?.image}`);
+    saveAs(data[0]?.image);
   };
   return (
     <div>
@@ -35,8 +35,8 @@ const Image = () => {
         DOWNLOAD
       </button>
       {data[0]?.image ? (
-        <img src={`https://visa-management-backend1.onrender.com/uploads/${data[0]?.image}`} />
-      ) : (
+        <img src={data[0]?.image}/>
+     ) : (
         "not found your visa"
       )}
     </div>

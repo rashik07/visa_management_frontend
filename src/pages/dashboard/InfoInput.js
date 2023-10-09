@@ -80,7 +80,7 @@ const InfoInput = () => {
     enterLoading(0);
     // AddInputData(values);
     let formData = new FormData();
-    formData.append("image", values.image[0].originFileObj);
+    formData.append("filename", values.filename[0].originFileObj);
     formData.append("name", values.name);
     formData.append("passport", values.passport);
     try {
@@ -178,14 +178,14 @@ const InfoInput = () => {
                 <Input />
               </Form.Item>
               <Form.Item
-                name="image"
+                name="filename"
                 label="Upload"
                 valuePropName="fileList"
                 getValueFromEvent={normFile}
                 extra="file upload png/jpg"
                 rules={[{ required: true, message: "Please upload picture !" }]}
               >
-                <Upload name="image" listType="picture">
+                <Upload name="filename" listType="picture">
                   <Button icon={<UploadOutlined />}>Click to upload</Button>
                 </Upload>
               </Form.Item>
