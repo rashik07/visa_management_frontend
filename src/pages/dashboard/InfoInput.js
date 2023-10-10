@@ -180,10 +180,10 @@ const InfoInput = () => {
               <Form.Item
                 name="filename"
                 label="Upload"
-                valuePropName="fileList"
+                // valuePropName="fileList"
                 getValueFromEvent={normFile}
                 extra="file upload png/jpg"
-                rules={[{ required: true, message: "Please upload picture !" }]}
+                // rules={[{ required: true, message: "Please upload picture !" }]}
               >
                 <Upload name="filename" listType="picture">
                   <Button icon={<UploadOutlined />}>Click to upload</Button>
