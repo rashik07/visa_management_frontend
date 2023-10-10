@@ -39,13 +39,7 @@ const Image = () => {
       >
         DOWNLOAD
       </button>
-      <Button
-      type="primary"
-  
-      onClick={downloadImage}
-    >
-      Download Image
-    </Button>
+     
       {/* <a href={url} download={url}>download</a> */}
       {/* <Link href={url}>
         Download Image
