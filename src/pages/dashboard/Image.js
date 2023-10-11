@@ -1,12 +1,16 @@
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import backend from "../api/backend";
 import { saveAs } from "file-saver";
 import Link from "next/link";
 import { Button } from "antd";
 
+import DownloadImage from "@/components/searchPage.js/DownloadImage";
+import ComponentToPrint from "./ComponentToPrint ";
+import ReactToPrint from "react-to-print";
 const Image = () => {
   const router = useRouter();
+
   const [data, setData] = useState({});
   const { _id } = router.query;
   useEffect(() => {
@@ -23,32 +27,42 @@ const Image = () => {
       });
   }, [_id]);
   console.log(data);
+  let newWindow;
   const saveFile = () => {
-    saveAs(data[0]?.image,"image.png");
+    saveAs(data[0]?.image, "image.png");
   };
-  let url=data[0]?.image
+  let url = data[0]?.image;
 
+  const componentRef = useRef(null);
+  console.log(componentRef);
   return (
     <div>
-      <button
+      {/* <button
         // href={`http://localhost:8080/uploads/${data[0]?.image}`}
         download
         className="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-3"
         onClick={saveFile}
-        // onClick={downloadImage}
+        // onClick={()=>window.print()}
       >
         DOWNLOAD
-      </button>
-     
-      {/* <a href={url} download={url}>download</a> */}
-      {/* <Link href={url}>
-        Download Image
-      </Link> */}
-      {data[0]?.image ? (
-        <img src={data[0]?.image}/>
-     ) : (
-        "not found your visa"
-      )}
+      </button> */}
+      <ReactToPrint
+        trigger={() => (
+          <button
+            // href={`http://localhost:8080/uploads/${data[0]?.image}`}
+            download
+            className="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-3"
+            onClick={saveFile}
+            // onClick={()=>window.print()}
+          >
+            DOWNLOAD
+          </button>
+        )}
+        content={() => componentRef.current}
+      />
+      <div ref={componentRef}>
+        {data[0]?.image ? <img src={data[0]?.image} /> : "not found your visa"}
+      </div>
     </div>
   );
 };
