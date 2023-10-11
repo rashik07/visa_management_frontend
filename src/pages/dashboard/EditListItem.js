@@ -21,12 +21,15 @@ const EditListItem = ({record, setReload}) => {
     return e?.fileList;
   };
   const onFinish = async (values) => {
-    // console.log("Success:", values);
+    console.log("Success:", values);
     // enterLoading(0);
     // AddInputData(values);
     setReload(true);
     let formData = new FormData();
-    formData.append("filename", values.filename[0].originFileObj);
+    if(values.filename!=undefined){
+      formData.append("filename", values?.filename[0]?.originFileObj);
+    }
+   
     formData.append("name", values.name);
     formData.append("passport", values.passport);
     try{
